@@ -59,7 +59,6 @@ VlnPlot(Bcells, features=genes,group.by = "Bcelltype",split.by = "Bcelltype",col
   xlab("")
 
 
-#Bcells<-readRDS("D:/project/scRNAseq/XiaoCaixia_Cellranger_23.1.29/harmony/Bcells/Bcells_harmony_res0.4.annotaion.rds")
 data1<-Bcells@meta.data
 data<-Embeddings(Bcells,'umap') %>% as.data.frame()
 mydata<-merge(data,data1[,c('sample','Bcelltype')],by=0,all.x=T) %>% column_to_rownames("Row.names")
@@ -72,8 +71,7 @@ theme_dot<-theme(panel.grid = element_blank(),
                  panel.border = element_blank(),
                  legend.text = element_text(size=6),
                  legend.title = element_text(size=8),
-                 strip.text = element_text(size=9),#分面背景修改的参数
-                 #分面label的背景设置是theme里面的strip.background调整，设置一串element_rect给他
+                 strip.text = element_text(size=9),
                  plot.title = element_text(size=9))
 
 pdf("./PANDO/harmony/Bcells/Bcells_umap.pdf",width = 4,height = 2.4)
